@@ -1,0 +1,41 @@
+float length(arr[][],p[][])
+{
+float ans = 0;
+int i = j = 0;
+int n = (sizeof(arr)/sizeof(int));
+float up,left,a1,a2;
+
+if(n % 2 != 0)
+{
+   return -1;
+}
+
+for(i=0;i<n;i++)
+{
+   for(j=0;j<n;j++)
+   {
+      up = 0;
+      left = 0;
+      
+      if(i>0)
+      {
+          up = arr[i-1][j];
+      }
+      if(j>0)
+      {
+          left = arr[i][j-1];
+      }
+      a1 = arr[i][j] - up;
+      a2 = arr[i][j] - left;
+      
+      ans += a1 + a2;
+      
+      if(i == n-1)
+         ans += arr[i][j];
+      if(j == n-1)
+         ans += arr[i][j];
+   }
+}
+ans += n*n*2;
+return ans;
+}
